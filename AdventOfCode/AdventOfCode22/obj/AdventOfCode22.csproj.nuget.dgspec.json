@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "S:\\Git\\AdventOfCode2022\\AdventOfCode\\AdventOfCode22\\AdventOfCode22.csproj": {}
+    "C:\\Users\\Simon Kazemi\\Desktop\\Git\\AdventOfCode2022\\AdventOfCode\\AdventOfCode22\\AdventOfCode22.csproj": {}
   },
   "projects": {
-    "S:\\Git\\AdventOfCode2022\\AdventOfCode\\AdventOfCode22\\AdventOfCode22.csproj": {
+    "C:\\Users\\Simon Kazemi\\Desktop\\Git\\AdventOfCode2022\\AdventOfCode\\AdventOfCode22\\AdventOfCode22.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "S:\\Git\\AdventOfCode2022\\AdventOfCode\\AdventOfCode22\\AdventOfCode22.csproj",
+        "projectUniqueName": "C:\\Users\\Simon Kazemi\\Desktop\\Git\\AdventOfCode2022\\AdventOfCode\\AdventOfCode22\\AdventOfCode22.csproj",
         "projectName": "AdventOfCode22",
-        "projectPath": "S:\\Git\\AdventOfCode2022\\AdventOfCode\\AdventOfCode22\\AdventOfCode22.csproj",
-        "packagesPath": "C:\\Users\\Freezen\\.nuget\\packages\\",
-        "outputPath": "S:\\Git\\AdventOfCode2022\\AdventOfCode\\AdventOfCode22\\obj\\",
+        "projectPath": "C:\\Users\\Simon Kazemi\\Desktop\\Git\\AdventOfCode2022\\AdventOfCode\\AdventOfCode22\\AdventOfCode22.csproj",
+        "packagesPath": "C:\\Users\\Simon Kazemi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Simon Kazemi\\Desktop\\Git\\AdventOfCode2022\\AdventOfCode\\AdventOfCode22\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "S:\\IDE\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Freezen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Simon Kazemi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
