@@ -8,7 +8,7 @@ namespace AdventOfCode22
 {
     public class Day3
     {
-        public void Day3_part2()
+        public void Part2()
         {
             int result = 0;
             string input = System.IO.File.ReadAllText(@"S://Git/resources/input_day3.txt");
@@ -62,7 +62,7 @@ namespace AdventOfCode22
         }
 
 
-        public void Day3_part1()
+        public void Part1()
         {
             int result = 0;
             string input = System.IO.File.ReadAllText(@"S://Git/resources/input_day3.txt");

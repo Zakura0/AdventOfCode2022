@@ -8,7 +8,8 @@ namespace AdventOfCode22
 {
     public class Day4
     {
-        public void Day4_part1()
+        public string Input { get; }
+        public void Part1()
         {
             string input = File.ReadAllText(@"S://Git/resources/input_day4.txt");
             var lines = input.Split('\n');
