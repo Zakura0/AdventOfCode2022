@@ -9,55 +9,77 @@ namespace AdventOfCode22
 {
     public class Day9
     {
-        private struct Knot
-        {
-            public int row;
-            public int col;
-        }
+        record struct Knot(int row, int col);
         private string Input { get; set; }
+        public int Part1_Sum { get; set; }
+        public int Part2_Sum { get; set; }
         public Day9(string input)
         {
             this.Input = input;
         }
-        public void Part1()
+        private IEnumerable<Knot> Knots(string input, int ropeLength)
         {
-            Knot Head = new Knot();
-            Knot Tail = new Knot();
-            Head.row = 0;
-            Head.row = 0;
-            Tail.row = 0;
-            Tail.row = 0;
             var lines = Input.Split('\n');
             Array.Resize(ref lines, lines.Length - 1);
+            var knots = Enumerable.Repeat(new Knot(0, 0), ropeLength).ToArray();
+            yield return knots.Last();
+
             foreach (var line in lines)
             {
                 var parts = line.Split(' ');
-                var amount = int.Parse(parts[1]);
                 var direction = parts[0];
+                var amount = int.Parse(parts[1]);
+
                 for (var i = 0; i < amount; i++)
                 {
-                    MoveHead(Head, direction);
+                    MoveHead(knots, direction);
+                    yield return knots.Last();
                 }
-                
             }
         }
 
-        private void MoveHead(Knot head, string dir)
+        public void Part1()
         {
-            switch (dir)
+            Part1_Sum = Knots(Input, 2).ToHashSet().Count;
+        }
+        public void Part2()
+        {
+            Part2_Sum = Knots(Input, 10).ToHashSet().Count;
+        }
+        private void MoveHead(Knot[] rope, string dir)
+        {
+            rope[0] = dir switch
             {
-                case "U":
-                    head.row += 1;
-                    break;
-                case "D":
-                    head.row -= 1;
-                    break;
-                case "R":
-                    head.col += 1;
-                    break;
-                case "L":
-                    head.col -= 1;
-                    break;
+                "U" => rope[0] with
+                {
+                    row = rope[0].row - 1 
+                },
+                "D" => rope[0] with 
+                {
+                    row = rope[0].row + 1
+                },
+                "L" => rope[0] with 
+                {
+                    col = rope[0].col - 1
+                },
+                "R" => rope[0] with
+                {
+                    col = rope[0].col + 1
+                }
+            };
+            //move tails
+            for (var i = 1; i < rope.Length; i++)
+            {
+                var trow = rope[i - 1].row - rope[i].row;
+                var tcol = rope[i - 1].col - rope[i].col;
+
+                if (Math.Abs(trow) > 1 || Math.Abs(tcol) > 1)
+                {
+                    rope[i] = new Knot(
+                        rope[i].row + Math.Sign(trow),
+                        rope[i].col + Math.Sign(tcol)
+                    );
+                }
             }
         }
 

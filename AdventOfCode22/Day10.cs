@@ -25,6 +25,23 @@ namespace AdventOfCode22
             Part1_Sum = i.ToString();
 
         }
+        public void Part2()
+        {
+            var test = Signal(Input).Select(signal =>
+            {
+                var spriteMiddle = signal.x;
+                var col = (signal.cycle - 1) % 40;
+                return Math.Abs(spriteMiddle - col) < 2 ? '#' : '.';
+            }).ToArray();
+            for (int i = 0; i < test.Count(); i++)
+            {
+                Console.Write(test[i]);
+                if (i % 40 == 0)
+                {
+                    Console.Write("\n");
+                }
+            }
+        }
         IEnumerable<(int cycle, int x)> Signal(string input)
         {
             var (cycle, x) = (1, 1);
