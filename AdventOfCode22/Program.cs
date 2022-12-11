@@ -16,6 +16,12 @@ d8.Part1();
 d8.Part2();
 Console.WriteLine("Day 8 Part 1: {0}",d8.Part1_Sum);
 Console.WriteLine("Day 8 Part 2: {0}", d8.Part2_Score);
+var d9 = new Day9(Input.Day9);
+d9.Part1();
+//Console.WriteLine("Day 10 Part 1: {0}", d9.Part1_Sum);
+var d10 = new Day10(Input.Day10);
+d10.Part1();
+Console.WriteLine("Day 10 Part 1: {0}", d10.Part1_Sum);
 Console.Read();
 
 
