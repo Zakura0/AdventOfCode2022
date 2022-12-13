@@ -8,11 +8,17 @@ namespace AdventOfCode22
 {
     public class Day3
     {
+        private string Input { get; set; }
+        public int Part2_Sum { get; set; }
+        public int Part1_Sum { get; set; }
+        public Day3(string input) 
+        {
+            Input = input;
+        }
+
         public void Part2()
         {
-            int result = 0;
-            string input = System.IO.File.ReadAllText(@"S://Git/resources/input_day3.txt");
-            var lines = input.Split('\n');
+            var lines = Input.Split('\n');
             Array.Resize(ref lines, lines.Length - 1);
             var index = 0;
             var line1 = "";
@@ -44,11 +50,11 @@ namespace AdventOfCode22
                                 var equals3 = line1[i];
                                 if (Char.IsUpper(equals3))
                                 {
-                                    result = result + (((byte)equals3 - 64) + 26);
+                                    Part2_Sum = Part2_Sum + (((byte)equals3 - 64) + 26);
                                 }
                                 else
                                 {
-                                    result = result + ((byte)equals3 - 96);
+                                    Part2_Sum = Part2_Sum + ((byte)equals3 - 96);
                                 }
                                 break;
                             }
@@ -57,16 +63,12 @@ namespace AdventOfCode22
                     index = 0;
                 }
             }
-            Console.WriteLine(result);
-            Console.ReadLine();
         }
 
 
         public void Part1()
         {
-            int result = 0;
-            string input = System.IO.File.ReadAllText(@"S://Git/resources/input_day3.txt");
-            var lines = input.Split('\n');
+            var lines = Input.Split('\n');
             Array.Resize(ref lines, lines.Length - 1);
             foreach (var line in lines)
             {
@@ -79,18 +81,16 @@ namespace AdventOfCode22
                         var temp = part1[i];
                         if (Char.IsUpper(temp))
                         {
-                            result = result + (((byte)temp - 64) + 26);
+                            Part1_Sum = Part1_Sum + (((byte)temp - 64) + 26);
                         }
                         else
                         {
-                            result = result + ((byte)temp - 96);
+                            Part1_Sum = Part1_Sum + ((byte)temp - 96);
                         }
                         break;
                     }
                 }
             }
-            Console.WriteLine(result);
-            Console.ReadLine();
         }
     }
 }

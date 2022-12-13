@@ -8,48 +8,50 @@ namespace AdventOfCode22
 {
     public class Day2
     {
-        public void main()
+        private string Input { get; set; }
+        public int Day2_Sum { get; set; }
+        public Day2(string input) 
         {
-            string input = System.IO.File.ReadAllText(@"C:\Users\Simon Kazemi\Downloads\input.txt");
-            var lines = input.Split('\n');
+            Input = input;
+        }
+        public void Process()
+        {
+            var lines = Input.Split('\n');
             Array.Resize(ref lines, lines.Length - 1);
-            int totalScore = 0;
             foreach (var line in lines)
             {
                 var game = line.Replace(" ", "");
                 switch (game)
                 {
                     case "AX":
-                        totalScore += 3;
+                        Day2_Sum += 3;
                         break;
                     case "AY":
-                        totalScore += 4;
+                        Day2_Sum += 4;
                         break;
                     case "AZ":
-                        totalScore += 8;
+                        Day2_Sum += 8;
                         break;
                     case "BX":
-                        totalScore += 1;
+                        Day2_Sum += 1;
                         break;
                     case "BY":
-                        totalScore += 5;
+                        Day2_Sum += 5;
                         break;
                     case "BZ":
-                        totalScore += 9;
+                        Day2_Sum += 9;
                         break;
                     case "CX":
-                        totalScore += 2;
+                        Day2_Sum += 2;
                         break;
                     case "CY":
-                        totalScore += 6;
+                        Day2_Sum += 6;
                         break;
                     case "CZ":
-                        totalScore += 7;
+                        Day2_Sum += 7;
                         break;
                 }
             }
-            Console.WriteLine(totalScore);
-            Console.ReadKey();
         }
     }
 }

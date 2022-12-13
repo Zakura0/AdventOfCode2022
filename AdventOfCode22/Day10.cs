@@ -33,6 +33,7 @@ namespace AdventOfCode22
                 var col = (signal.cycle - 1) % 40;
                 return Math.Abs(spriteMiddle - col) < 2 ? '#' : '.';
             }).ToArray();
+            Console.WriteLine("Day 10 Part 2: ");
             for (int i = 0; i < test.Count(); i++)
             {
                 Console.Write(test[i]);

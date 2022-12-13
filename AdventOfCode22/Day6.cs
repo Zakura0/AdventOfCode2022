@@ -8,10 +8,16 @@ namespace AdventOfCode22
 {
     public class Day6
     {
-        public string Input { get; }
-        public void Part1(int marker_length)
+        private string Input { get; set; }
+        public Day6(string input)
         {
-            string input = File.ReadAllText(@"S://Git/resources/input_day6.txt");
+            Input = input;
+        }
+        public int Result { get; set; }
+
+        public void Process(int marker_length)
+        {
+            string input = Input;
             for (int i = 0; i < input.Length; i++)
             {
                 var input_sub = input.Substring(i, marker_length);
@@ -31,12 +37,10 @@ namespace AdventOfCode22
                 }
                 if (is_not_multiple)
                 {
-                    Console.WriteLine(i + marker_length);
+                    Result = i + marker_length;
                     break;
                 }
             }
-            Console.ReadLine();
-
         }
     }
 }

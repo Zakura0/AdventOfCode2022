@@ -8,13 +8,13 @@ namespace AdventOfCode22
 {
     public class Day4
     {
-        public string Input { get; }
+        private string Input { get; }
+        public Day4(string input) => Input = input;
+        public int Part2_Sum { get; set; }
         public void Part1()
         {
-            string input = File.ReadAllText(@"S://Git/resources/input_day4.txt");
-            var lines = input.Split('\n');
+            var lines = Input.Split('\n');
             Array.Resize(ref lines, lines.Length - 1);
-            var result = 0;
             foreach (var line in lines)
             {
                 var split = line.Split('-', ',');
@@ -36,15 +36,13 @@ namespace AdventOfCode22
                 var temp2 = part2.Except(part1).ToList();
                 if (temp1.Count != part1.Count)
                 {
-                    result++;
+                    Part2_Sum++;
                 }
                 else if (temp2.Count != part2.Count)
                 {
-                    result++;
+                    Part2_Sum++;
                 }
             }
-            Console.WriteLine(result);
-            Console.ReadLine();
         }
     }
 }

@@ -9,6 +9,10 @@ namespace AdventOfCode22
 {
     public static class Input
     {
+        public static string Day1 =
+            File.ReadAllText(@"S://Git/resources/input_day1.txt");
+        public static string Day2 =
+            File.ReadAllText(@"S://Git/resources/input_day2.txt");
         public static string Day3 =
             File.ReadAllText(@"S://Git/resources/input_day3.txt");
         public static string Day4 = 
@@ -27,5 +31,7 @@ namespace AdventOfCode22
             File.ReadAllText(@"S://Git/resources/input_day10.txt");
         public static string Day11 =
             File.ReadAllText(@"S://Git/resources/input_day11.txt");
+        public static string Day12 =
+            File.ReadAllText(@"S://Git/resources/input_day12.txt");
     }
 }

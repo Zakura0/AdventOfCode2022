@@ -8,11 +8,15 @@ namespace AdventOfCode22
 {
     public class Day5
     {
-        public string Input { get; }
-        public void Part1()
+        public string Input { get; set; }
+        public Day5(string input)
         {
-            string input = File.ReadAllText(@"S://Git/resources/input_day5.txt");
-            var lines = input.Split('\n');
+            Input = input;
+        }
+
+        public void Process()
+        {
+            var lines = Input.Split('\n');
             Array.Resize(ref lines, lines.Length - 1);
             string[] stacks = new string[9];
             for (int i = 0; i < 8; i++)
@@ -41,9 +45,8 @@ namespace AdventOfCode22
             }
             foreach (var line in stacks)
             {
-                Console.WriteLine(line[0]);
+                Console.Write(line[0]);
             }
-            Console.ReadLine();
         }
     }
 }
