@@ -58,7 +58,9 @@ Console.WriteLine("Day 11 Part 1: {0}", d11.Part1_Sum);
 d11.Part2();
 Console.WriteLine("Day 11 Part 2: {0}", d11.Part2_Sum);
 var d12 = new Day12(Input.Day12);
-d12.Part1();
+d12.Process();
+Console.WriteLine("Day 12 Part 1: {0}", d12.Part1_Sum);
+Console.WriteLine("Day 12 Part 1: {0}", d12.Part2_Sum);
 Console.Read();
 
 

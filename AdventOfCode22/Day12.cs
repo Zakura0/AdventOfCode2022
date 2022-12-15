@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace AdventOfCode22
 {
@@ -17,6 +20,8 @@ namespace AdventOfCode22
         private int Columns { get; set; }
         private const int StartValue = -13;
         private const int EndValue = -27;
+        public int Part1_Sum { get; set; }
+        public int Part2_Sum { get; set; }
 
         private Dictionary<Cell, List<Cell>> Neighbors = new();
         public Day12(string input)
@@ -34,13 +39,25 @@ namespace AdventOfCode22
             {
                 for (int col = 0; col < Columns; col++)
                 {
-                    var cell = new Cell(row, col, (byte)lines[row][col] - 96);
+                    Cell cell;
+                    if ((byte)lines[row][col] - 96 == -13)
+                    {
+                        cell = new Cell(row, col, 1);
+                    }
+                    else if ((byte)lines[row][col] - 96 == -27)
+                    {
+                        cell = new Cell(row, col, 26);
+                    }
+                    else
+                    {
+                        cell = new Cell(row, col, (byte)lines[row][col] - 96);
+                    }
                     Grid[row, col] = cell;
-                    if (cell.value == -13)
+                    if ((byte)lines[row][col] - 96 == -13)
                     {
                         Start = cell;
                     }
-                    else if (cell.value == -27)
+                    else if ((byte)lines[row][col] - 96 == -27)
                     {
                         End = cell;
                     }
@@ -64,22 +81,61 @@ namespace AdventOfCode22
             }
         }
         private List<Cell> GetNeighbors(Cell cell) => Neighbors[cell];
-        public void Part1()
+        public void Process()
         {
             ProcessGrid();
-            var test = GetNeighbors(End);
+            Part1_Sum = BreadthFirstSearch(Start, End);
+            List<Cell> p2list = new List<Cell>();
+            for (int row = 0; row < Grid.GetLength(0); row++)
+            {
+                for (int col = 0; col < Grid.GetLength(1); col++)
+                {
+                    if (Grid[row, col].value == 1)
+                    {
+                        p2list.Add(Grid[row, col]);
+                    }
+                }
+            }
+            List<int> paths = new List<int>();
+            foreach (var cell in p2list)
+            {
+                paths.Add(BreadthFirstSearch(cell, End));
+            }
+            Part2_Sum = paths.Min();
+        }
+        private int BreadthFirstSearch(Cell StartPos, Cell End)
+        {
+            var queue1 = new Queue()!;
+            var queue2 = new Queue()!;
+            queue1.Enqueue(StartPos);
+            var steps = 0;
+            var seen_cells = new HashSet<Cell>();
+            while (!seen_cells.Contains(End))
+            {
+                steps++;
+                if (queue1.Count == 0)
+                {
+                    return 100000;
+                }
+                while (queue1.Count != 0)
+                {
+                    var current = (Cell)queue1.Dequeue();
+                    foreach (var neighbor in GetNeighbors(current))
+                    {
+                        if (!seen_cells.Contains(neighbor) && !queue2.Contains(neighbor))
+                        {
+                            queue2.Enqueue(neighbor);
+                            seen_cells.Add(neighbor);
+                        }
+                    }
+                }
+                queue1 = (Queue)queue2.Clone();
+                queue2.Clear();
+            }
+            return steps;
         }
         private static bool IsValidNeighbor(Cell current, Cell neighbor)
         {
-            if (current.value == StartValue)
-            {
-                return neighbor.value <= 2;
-            }
-            if (neighbor.value == EndValue)
-            {
-                return current.value == 26;
-            }
-
             return neighbor.value == StartValue || neighbor.value - current.value <= 1;
         }
         private Cell? GetCellIfInBounds(int row, int col)
@@ -88,9 +144,28 @@ namespace AdventOfCode22
             {
                 return Grid[row, col];
             }
-            else return null;            
+            else return null;
         }
-        
+
+        private static List<Cell> BuildPath(Cell start, Cell end, IReadOnlyDictionary<Cell, Cell?> cameFrom)
+        {
+            if (!cameFrom.ContainsKey(end))
+            {
+                return new List<Cell>();
+            }
+
+            var pathCell = end;
+            var path = new List<Cell>();
+
+            while (pathCell != start)
+            {
+                path.Add(pathCell);
+                pathCell = cameFrom[pathCell]!;
+            }
+            path.Reverse();
+
+            return path;
+        }
     }
     public record Cell(int x, int y, int value);
 }
