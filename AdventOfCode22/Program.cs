@@ -39,7 +39,7 @@ Console.WriteLine("Day 7 Part 2: {0}", P2_Sum);
 var d8 = new Day8(Input.Day8);
 d8.Part1();
 d8.Part2();
-Console.WriteLine("Day 8 Part 1: {0}",d8.Part1_Sum);
+Console.WriteLine("Day 8 Part 1: {0}", d8.Part1_Sum);
 Console.WriteLine("Day 8 Part 2: {0}", d8.Part2_Score);
 var d9 = new Day9(Input.Day9);
 d9.Part1();
@@ -65,6 +65,10 @@ var d13 = new Day13(Input.Day13);
 d13.Process();
 Console.WriteLine("Day 13 Part 1: {0}", d13.Part1_Sum);
 Console.WriteLine("Day 13 Part 2: {0}", d13.Part2_Sum);
+var d14 = new Day14(Input.Day14);
+d14.Process();
+Console.WriteLine("Day 14 Part 1: {0}", d14.Part1_Sum);
+Console.WriteLine("Day 14 Part 2: {0}", d14.Part2_Sum);
 Console.Read();
 
 

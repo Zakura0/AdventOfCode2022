@@ -35,5 +35,9 @@ namespace AdventOfCode22
             File.ReadAllText(@"S://Git/resources/input_day12.txt");
         public static string Day13 =
             File.ReadAllText(@"S://Git/resources/input_day13.txt");
+        public static string Day14 =
+            File.ReadAllText(@"S://Git/resources/input_day14.txt");
+        public static string Day15 =
+            File.ReadAllText(@"S://Git/resources/input_day15.txt");
     }
 }
