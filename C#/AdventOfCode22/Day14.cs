@@ -31,7 +31,6 @@ namespace AdventOfCode22
             Part1_Sum = DropSand(_Cave);
             _Cave = ProcessCave(true);
             Part2_Sum = DropSand(_Cave);
-
         }
         private int DropSand(CaveCell[,] _cave)
         {
@@ -49,30 +48,15 @@ namespace AdventOfCode22
                 }
                 else if (_cave[sandy + 1, sandx].identifier == '.')
                 {
-                    if (_cave[sandy, sandx].identifier == '+')
-                    {
-                        _cave[sandy, sandx] = new CaveCell(sandy, sandx, '.');
-                    }
-                    _cave[sandy + 1, sandx] = new CaveCell(sandy + 1, sandx, '+');
                     sandy++;
                 }
                 else if (_cave[sandy + 1, sandx - 1].identifier == '.')
                 {
-                    if (_cave[sandy, sandx].identifier == '+')
-                    {
-                        _cave[sandy, sandx] = new CaveCell(sandy, sandx, '.');
-                    }
-                    _cave[sandy + 1, sandx - 1] = new CaveCell(sandy + 1, sandx - 1, '+');
                     sandy++;
                     sandx--;
                 }
                 else if (_cave[sandy + 1, sandx + 1].identifier == '.')
                 {
-                    if (_cave[sandy, sandx].identifier == '+')
-                    {
-                        _cave[sandy, sandx] = new CaveCell(sandy, sandx, '.');
-                    }
-                    _cave[sandy + 1, sandx + 1] = new CaveCell(sandy + 1, sandx + 1, '+');
                     sandy++;
                     sandx++;
                 }
